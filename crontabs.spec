@@ -1,11 +1,10 @@
 Summary:	Root crontab files used to schedule the execution of programs
 Name:		crontabs
 Version:	1.10
-Release:	%mkrel 7
-License:	GPL
+Release:	%mkrel 8
+License:	GPLv2+
 Group:		System/Configuration/Other
 Source0:	crontab.bz2
-Requires:	/usr/bin/run-parts
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
