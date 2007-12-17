@@ -6,7 +6,6 @@ License:	GPLv2+
 Group:		System/Configuration/Other
 Source0:	crontab.bz2
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The crontabs package contains root crontab files.  Crontab is the
