@@ -1,12 +1,13 @@
-Summary:	Root crontab files used to schedule the execution of programs
 Name:		crontabs
 Version:	1.10
-Release:	%mkrel 8
+Release:	%mkrel 9
+Summary:	Root crontab files used to schedule the execution of programs
 License:	GPLv2+
 Group:		System/Configuration/Other
-Source0:	crontab.bz2
+Source0:	crontab
+Source1:	000-delay.cron
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 The crontabs package contains root crontab files.  Crontab is the
@@ -19,18 +20,20 @@ Crontabs handles a basic system function, so it should be installed on
 your system.
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 mkdir -p %{buildroot}%{_sysconfdir}/cron.{hourly,daily,weekly,monthly,yearly}
+mkdir -p %{buildroot}%{_docdir}/%{name}
 
-bzip2 -dc  %{SOURCE0} > %{buildroot}%{_sysconfdir}/crontab
-chmod 644 %{buildroot}%{_sysconfdir}/crontab
+install -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}
+install -m 644 %{SOURCE1} %{buildroot}%{_docdir}/%{name}
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
-%defattr(644,root,root,755)
+%defattr(-,root,root)
+%doc %{_docdir}/%{name}
 %config(noreplace) %{_sysconfdir}/crontab
 %dir %{_sysconfdir}/cron.hourly
 %dir %{_sysconfdir}/cron.daily
