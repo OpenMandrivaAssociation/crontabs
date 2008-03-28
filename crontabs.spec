@@ -1,6 +1,6 @@
 Name:		crontabs
 Version:	1.10
-Release:	%mkrel 9
+Release:	%mkrel 10
 Summary:	Root crontab files used to schedule the execution of programs
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -8,6 +8,7 @@ Source0:	crontab
 Source1:	000-delay.cron
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
+Requires:	run-parts
 
 %description
 The crontabs package contains root crontab files.  Crontab is the
