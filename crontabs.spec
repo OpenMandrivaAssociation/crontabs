@@ -5,7 +5,7 @@ Summary:	Root crontab files used to schedule the execution of programs
 License:	GPLv2+
 Group:		System/Configuration/Other
 Source0:	crontab
-Source1:	000-delay.cron
+Source1:	config
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 Requires:	run-parts
@@ -23,11 +23,12 @@ your system.
 %install
 rm -rf %{buildroot}
 
-mkdir -p %{buildroot}%{_sysconfdir}/cron.{hourly,daily,weekly,monthly,yearly}
+mkdir -p %{buildroot}%{_sysconfdir}/cron.{hourly,daily,weekly,monthly,yearly} 
+mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
 mkdir -p %{buildroot}%{_docdir}/%{name}
 
 install -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_docdir}/%{name}
+install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/crontab
 
 %clean
 rm -rf %{buildroot}
@@ -36,6 +37,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc %{_docdir}/%{name}
 %config(noreplace) %{_sysconfdir}/crontab
+%config(noreplace) %{_sysconfdir}/sysconfig/crontab
 %dir %{_sysconfdir}/cron.hourly
 %dir %{_sysconfdir}/cron.daily
 %dir %{_sysconfdir}/cron.weekly
