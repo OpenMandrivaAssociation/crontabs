@@ -1,6 +1,6 @@
 Name:		crontabs
 Version:	1.10
-Release:	%mkrel 12
+Release:	%mkrel 13
 Summary:	Root crontab files used to schedule the execution of programs
 License:	GPLv2+
 Group:		System/Configuration/Other
